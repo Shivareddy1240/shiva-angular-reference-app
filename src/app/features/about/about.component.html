@@ -1,22 +1,165 @@
-<section class="page">
-<div class="container">
-<app-section-header eyebrow="About" title="About Shiva" description="This page also demonstrates Angular lifecycle hooks in a visible way."/>
-<div class="grid grid-2">
-<article class="card">
-<h3>Developer Profile</h3>
-<p class="muted">I enjoy building practical software, product prototypes, learning apps and reusable reference solutions.</p>
-<div class="pill-row">
-<span class="badge">Angular</span>
-<span class="badge">.NET</span>
-<span class="badge">Flutter</span>
-<span class="badge">SQL</span>
-</div>
-</article>
-<article class="card">
-<h3>Lifecycle Hooks Demo</h3>
-<p class="muted">Messages below are updated from component lifecycle methods.</p>
-<ul>@for(log of logs(); track log){<li>{{log}}</li>}</ul>
-</article>
-</div>
-</div>
+<section class="page about-page">
+  <div class="container">
+    <app-section-header
+      eyebrow="About Me"
+      title="Senior .NET Full Stack Developer & Technical Lead"
+      description="A resume-driven portfolio page highlighting enterprise delivery, cloud modernization, Angular development, architecture and leadership experience."
+    ></app-section-header>
+
+    <section class="about-hero card">
+      <div class="about-hero__content">
+        <span class="badge">Hyderabad, India • 9+ Years Experience</span>
+        <h2>Building scalable enterprise applications with .NET, Angular and Azure.</h2>
+        <p>
+          I am Shiva Reddy M, a Senior .NET Full Stack Developer and Technical Lead with experience
+          architecting, building and delivering enterprise applications across healthcare, insurance,
+          FMCG and financial services domains.
+        </p>
+        <p>
+          My core strength is converting complex business problems into clean, scalable and maintainable
+          systems using C#, ASP.NET Core Web API, Angular, SQL Server, Azure cloud services, CI/CD and
+          production-grade observability.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" routerLink="/projects">View Projects</a>
+          <a class="btn ghost" routerLink="/resume">View Resume</a>
+        </div>
+      </div>
+
+      <aside class="about-hero__panel">
+        <div class="profile-orb">SR</div>
+        <h3>Technical Leadership Focus</h3>
+        <p class="muted">
+          Solution architecture, team mentoring, cloud migration, performance tuning and production reliability.
+        </p>
+        <div class="pill-row">
+          <span class="badge">.NET 8/9</span>
+          <span class="badge">Angular</span>
+          <span class="badge">Azure</span>
+          <span class="badge">Microservices</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">Impact Snapshot</p>
+          <h2>Numbers that tell the delivery story</h2>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        @for (item of highlights; track item.label) {
+          <article class="metric-card card">
+            <strong>{{ item.value }}</strong>
+            <span>{{ item.label }}</span>
+            <p>{{ item.note }}</p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">Core Expertise</p>
+          <h2>Full-stack skills with architecture depth</h2>
+        </div>
+      </div>
+
+      <div class="expertise-grid">
+        @for (group of expertise; track group.title) {
+          <article class="expertise-card card">
+            <div class="expertise-card__icon">{{ group.title.charAt(0) }}</div>
+            <h3>{{ group.title }}</h3>
+            <p class="muted">{{ group.description }}</p>
+            <div class="pill-row">
+              @for (skill of group.skills; track skill) {
+                <span class="badge">{{ skill }}</span>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">Experience Timeline</p>
+          <h2>Enterprise delivery across multiple domains</h2>
+        </div>
+      </div>
+
+      <div class="timeline">
+        @for (item of experience; track item.company) {
+          <article class="timeline-item card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-head">
+              <div>
+                <h3>{{ item.company }}</h3>
+                <p class="muted">{{ item.role }}</p>
+              </div>
+              <span class="timeline-period">{{ item.period }}</span>
+            </div>
+            <p class="client-name">{{ item.client }}</p>
+            <ul>
+              @for (point of item.points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">Projects & Initiatives</p>
+          <h2>Beyond daily delivery</h2>
+        </div>
+      </div>
+
+      <div class="initiative-grid">
+        @for (project of initiatives; track project.title) {
+          <article class="initiative-card card">
+            <div class="spaced initiative-card__top">
+              <h3>{{ project.title }}</h3>
+              <span class="badge">{{ project.status }}</span>
+            </div>
+            <p class="muted">{{ project.description }}</p>
+            <div class="pill-row">
+              @for (tag of project.tags; track tag) {
+                <span class="badge subtle">{{ tag }}</span>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section-block grid grid-2">
+      <article class="card focus-card">
+        <p class="eyebrow">Currently Focused On</p>
+        <h3>Modern engineering, AI-assisted workflows and mobile-first products</h3>
+        <p class="muted">
+          I am actively building Flutter-based mobile applications for healthcare and EdTech while exploring
+          AI-assisted refactoring, GitHub Copilot workflows and clean reference architectures.
+        </p>
+      </article>
+
+      <article class="card lifecycle-card">
+        <p class="eyebrow">Angular Concept Demo</p>
+        <h3>Lifecycle hooks used on this page</h3>
+        <p class="muted">This section keeps the Angular learning purpose alive while the page stays portfolio-focused.</p>
+        <ul>
+          @for (log of logs(); track log) {
+            <li>{{ log }}</li>
+          }
+        </ul>
+      </article>
+    </section>
+  </div>
 </section>
