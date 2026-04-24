@@ -1,0 +1,10 @@
+<section class="page">
+<div class="container">
+<app-section-header eyebrow="Proof" title="Certifications & learning" description="A clean page for certifications, courses and self-learning milestones."/>
+<div class="grid grid-3">@for(c of data.certifications; track c.name){<article class="card">
+<span class="badge">{{c.year}}</span>
+<h3>{{c.name}}</h3>
+<p class="muted">{{c.issuer}}</p>
+</article>}</div>
+</div>
+</section>

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 170px;
+}
+
+.stat-card h2 {
+  margin: 8px 0;
+  font-size: 42px;
+  line-height: 1;
+}

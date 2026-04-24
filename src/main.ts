@@ -1,0 +1,10 @@
+import { ErrorHandler } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+import { demoInterceptor } from './app/core/interceptors/demo.interceptor';
+import { GlobalErrorHandler } from './app/core/services/error-handler.service';
+bootstrapApplication(AppComponent, { providers: [provideAnimations(), provideHttpClient(withInterceptors([demoInterceptor])), provideRouter(routes, withViewTransitions(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })), { provide: ErrorHandler, useClass: GlobalErrorHandler }] }).catch(err => console.error(err));

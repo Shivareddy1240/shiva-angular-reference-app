@@ -1,0 +1,12 @@
+<article class="card project-card" appHighlight>
+  <div class="project-main">
+    <div class="spaced project-header"><span class="badge">{{ project().category }}</span><b>{{ project().status }}</b></div>
+    <h3>{{ project().name }}</h3>
+    <p class="muted project-description">{{ project().description }}</p>
+    <div class="pill-row project-tags">@for (technology of project().tech; track technology) { <span class="badge">{{ technology }}</span> }</div>
+  </div>
+  <div class="project-footer">
+    <p class="project-impact"><b>Impact:</b> {{ project().impact }}</p>
+    <button class="btn ghost favorite" type="button" (click)="toggleFavorite()">{{ favorite() ? '★ Favorited' : '☆ Add Favorite' }}</button>
+  </div>
+</article>

@@ -1,0 +1,16 @@
+<section class="page">
+<div class="container">
+<app-section-header eyebrow="Skills" title="Skill matrix with custom pipe" description="Demonstrates reusable components, signal filters and a custom experience label pipe."/>
+<div class="card filter-card">
+<select class="input" [(ngModel)]="selectedCategoryModel" (ngModelChange)="category.set($event)">
+<option>All</option>
+<option>Frontend</option>
+<option>Backend</option>
+<option>Database</option>
+<option>Mobile</option>
+<option>Engineering</option>
+</select>
+</div>
+<div class="grid grid-3">@for(skill of filtered(); track skill.name){<app-skill-meter [skill]="skill" />}</div>
+</div>
+</section>

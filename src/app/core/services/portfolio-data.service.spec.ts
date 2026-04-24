@@ -1,0 +1,3 @@
+import { TestBed } from '@angular/core/testing';
+import { PortfolioDataService } from './portfolio-data.service';
+describe('PortfolioDataService', () => { let service: PortfolioDataService; beforeEach(() => { TestBed.configureTestingModule({}); service = TestBed.inject(PortfolioDataService); localStorage.clear(); }); it('should expose sample projects', () => { expect(service.projects().length).toBeGreaterThan(0); }); it('should toggle favorites', () => { service.toggleFavorite(1); expect(service.isFavorite(1)).toBeTrue(); service.toggleFavorite(1); expect(service.isFavorite(1)).toBeFalse(); }); });

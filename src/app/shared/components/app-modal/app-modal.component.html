@@ -1,0 +1,9 @@
+@if (modal.modal(); as state) {
+  <div class="modal-backdrop" (click)="modal.close()">
+    <section class="modal card" (click)="$event.stopPropagation()">
+      <div class="spaced"><h2>{{ state.title }}</h2><button class="btn ghost" type="button" (click)="modal.close()">✕</button></div>
+      <p class="muted">{{ state.body }}</p>
+      <button class="btn primary" type="button" (click)="modal.close()">{{ state.actionLabel || 'Got it' }}</button>
+    </section>
+  </div>
+}

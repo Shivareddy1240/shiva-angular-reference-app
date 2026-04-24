@@ -1,0 +1,13 @@
+<button class="btn ghost command-button" type="button" (click)="toggle()">⌘ Search</button>
+@if (open()) {
+  <div class="palette-backdrop" (click)="close()">
+    <section class="palette card" (click)="$event.stopPropagation()">
+      <input class="input" placeholder="Search pages, demos and features..." [ngModel]="query()" (ngModelChange)="query.set($event)" autofocus>
+      <div class="result-list">
+        @for (item of filtered(); track item.path) {
+          <button type="button" class="result" (click)="go(item.path)"><b>{{ item.label }}</b><span class="muted">{{ item.hint }}</span></button>
+        }
+      </div>
+    </section>
+  </div>
+}

@@ -1,0 +1,9 @@
+import { Component, computed, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { PortfolioDataService } from '../../core/services/portfolio-data.service';
+import { ToastService } from '../../core/services/toast.service';
+import { SectionHeaderComponent } from '../../shared/components/section-header/section-header.component';
+import { ProjectCardComponent } from '../../shared/components/project-card/project-card.component';
+import { EmptyStateComponent } from '../../shared/components/empty-state/empty-state.component';
+@Component({ selector: 'app-projects', standalone: true, imports: [FormsModule, SectionHeaderComponent, ProjectCardComponent, EmptyStateComponent], templateUrl: './projects.component.html', styleUrl: './projects.component.scss' })
+export class ProjectsComponent { data = inject(PortfolioDataService); toast = inject(ToastService); search = signal(''); category = signal('All'); filtered = computed(() => { const term = this.search().toLowerCase().trim(); const category = this.category(); return this.data.projects().filter(project => (category === 'All' || project.category === category) && (!term || `${project.name} ${project.description} ${project.tech.join(' ')}`.toLowerCase().includes(term))); }); setCategory(value: string): void { this.category.set(value); } toggleFavorite(projectId: number): void { this.data.toggleFavorite(projectId); this.toast.show('Favorite project updated', 'success'); } addSampleProject(): void { const id = Math.max(...this.data.projects().map(p => p.id)) + 1; this.data.addProject({ id, name: `Angular Demo ${id}`, category: 'Angular', description: 'User-added sample project stored in memory for Angular service/state demo.', tech: ['Angular', 'Signals', 'Components'], impact: 'Demonstrates adding items through a service.', status: 'Learning', featured: false }); this.toast.show('Sample project added', 'success'); } }
