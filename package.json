@@ -1,6 +1,6 @@
 {
-  "name": "shiva-angular-reference-premium",
-  "version": "3.0.0",
+  "name": "shiva-angular-reference-app",
+  "version": "3.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^20.0.0",
     "@angular/platform-browser-dynamic": "^20.0.0",
     "@angular/router": "^20.0.0",
-    "lucide-angular": "^0.468.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
